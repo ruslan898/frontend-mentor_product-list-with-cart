@@ -11,4 +11,9 @@
     color: $rose-900;
     @include text-preset-3;
   }
+
+  &-cart {
+    color: $red;
+    @include text-preset-2;
+  }
 }

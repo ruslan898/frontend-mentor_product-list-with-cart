@@ -1,0 +1,18 @@
+@use '/src/sass/variables.scss' as *;
+@use '/src/sass/mixins.scss' as *;
+
+.cart {
+  padding: 24px;
+  border-radius: 12px;
+  background-color: $white;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-self: flex-start;
+}
+
+@media (min-width: 1024px) {
+  .cart {
+    width: 384px;
+  }
+}
