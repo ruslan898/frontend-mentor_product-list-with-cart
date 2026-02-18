@@ -3,6 +3,7 @@ import Title from './ui/title/Title';
 import MenuItem from './ui/menuItem/MenuItem';
 import Cart from './ui/cart/Cart';
 import EmptyPlaceholder from './ui/emptyPlaceholder/EmptyPlaceholder';
+import Order from './ui/order/Order';
 
 import './App.scss';
 
@@ -25,7 +26,8 @@ export default function App() {
         </Menu>
         <Cart>
           <Title variant="cart">Your Cart (0)</Title>
-          <EmptyPlaceholder />
+          {/* <EmptyPlaceholder /> */}
+          <Order />
         </Cart>
       </div>
     </div>

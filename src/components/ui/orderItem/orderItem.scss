@@ -1,0 +1,36 @@
+@use '/src/sass/variables.scss' as *;
+@use '/src/sass/mixins.scss' as *;
+
+.order-item {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: $rose-500;
+  @include text-preset-4-bold;
+  border-bottom: 1px solid $rose-100;
+  padding-bottom: 16px;
+
+  &-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &-title {
+    color: $rose-900;
+  }
+
+  &-values {
+    display: flex;
+    gap: 8px;
+  }
+
+  &-quantity {
+    color: $red;
+  }
+
+  &-price {
+    @include text-preset-4;
+  }
+}

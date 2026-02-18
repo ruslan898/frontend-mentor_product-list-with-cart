@@ -1,0 +1,30 @@
+@use '/src/sass/variables.scss' as *;
+@use '/src/sass/mixins.scss' as *;
+
+.order {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &-list {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &-total {
+    color: $rose-900;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &-text {
+      @include text-preset-4;
+    }
+
+    &-price {
+      @include text-preset-2;
+    }
+  }
+}
