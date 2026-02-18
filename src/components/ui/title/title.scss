@@ -1,0 +1,14 @@
+@use '/src/sass/variables.scss' as *;
+@use '/src/sass/mixins.scss' as *;
+
+.title {
+  &-main {
+    color: $rose-900;
+    @include text-preset-1;
+  }
+
+  &-menu {
+    color: $rose-900;
+    @include text-preset-3;
+  }
+}

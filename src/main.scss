@@ -1,6 +1,6 @@
-@use './sass/variables.scss' as *;
-@use './sass/mixins.scss';
-@use './sass/modern-normalize.min.scss';
+@use '/src/sass/variables.scss' as *;
+@use '/src/sass/mixins.scss';
+@use '/src/sass/modern-normalize.min.scss';
 
 h1,
 h2,
@@ -38,4 +38,18 @@ body {
   background-color: $rose-50;
   color: $rose-900;
   font-family: 'Red Hat Text', sans-serif;
+}
+
+.container {
+	width: clamp(327px, 90%, 1216px);
+	margin: 0 auto;
+}
+
+button {
+  cursor: pointer;
+
+  img {
+    width: 20px;
+    height: 20px;
+  }
 }

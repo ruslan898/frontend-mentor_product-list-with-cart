@@ -1,0 +1,42 @@
+@use '/src/sass/variables.scss' as *;
+@use '/src/sass/mixins.scss' as *;
+
+.menu {
+  &-item {
+    display: flex;
+    flex-direction: column;
+    gap: 38px;
+
+    &-img {
+      position: relative;
+
+      img {
+        border-radius: 8px;
+      }
+
+      button {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, 50%);
+        z-index: 1;
+      }
+    }
+
+    &-descr {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    &-category {
+      color: $rose-500;
+      @include text-preset-4;
+    }
+
+    &-price {
+      color: $red;
+      @include text-preset-3;
+    }
+  }
+}

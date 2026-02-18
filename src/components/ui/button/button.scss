@@ -1,0 +1,25 @@
+@use '/src/sass/variables.scss' as *;
+@use '/src/sass/mixins.scss' as *;
+
+.btn-primary {
+  background-color: $red;
+  border: none;
+  border-radius: 999px;
+  padding: 16px 24px;
+  color: $white;
+  @include text-preset-3;
+}
+
+.btn-menu {
+  min-width: 160px;
+  padding: 12px;
+  background-color: $white;
+  border-radius: 999px;
+  border: 1px solid $rose-400;
+  color: $rose-900;
+  @include text-preset-4-bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
