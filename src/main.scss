@@ -41,11 +41,13 @@ body {
 }
 
 .container {
-	width: clamp(327px, 90%, 1216px);
-	margin: 0 auto;
+  width: clamp(327px, 90%, 1216px);
+  margin: 0 auto;
 }
 
 button {
+  border-radius: 999px;
+  transition: 0.2s all;
   cursor: pointer;
 
   img {

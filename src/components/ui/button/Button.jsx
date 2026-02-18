@@ -1,9 +1,9 @@
-import './button.scss'
+import clsx from 'clsx';
 
-export default function Button({ children, variant = 'primary' }) {
-  const classes = `btn-${variant}`
+import './button.scss';
 
-  return (
-    <button className={classes}>{ children }</button>
-  )
+export default function Button({ children, className, variant = 'primary' }) {
+  const classes = clsx(`btn-${variant}`, className);
+
+  return <button className={classes}>{children}</button>;
 }

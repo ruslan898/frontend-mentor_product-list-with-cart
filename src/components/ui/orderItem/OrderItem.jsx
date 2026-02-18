@@ -2,7 +2,7 @@ import Button from '../button/Button';
 
 import './orderItem.scss';
 
-import removeItemIcon from '/src/assets/images/icon-remove-item.svg';
+import RemoveItemIcon from '/src/assets/images/icon-remove-item.svg?react';
 
 export default function OrderItem() {
   return (
@@ -16,7 +16,7 @@ export default function OrderItem() {
         </div>
       </div>
       <Button variant="remove">
-        <img src={removeItemIcon} alt="Remove item" />
+        <RemoveItemIcon className="icon" />
       </Button>
     </li>
   );
