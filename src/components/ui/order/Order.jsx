@@ -1,23 +1,24 @@
-import OrderItem from '../orderItem/OrderItem';
 import CarbonNeutralInfo from '../carbonNeutralInfo/CarbonNeutralInfo';
 import Button from '../button/Button';
 
 import './order.scss';
 
-export default function Order() {
+export default function Order({ variant, children }) {
   return (
     <div className="order">
       <ul className="order-list">
-        <OrderItem />
-        <OrderItem />
-        <OrderItem />
+        {children}
       </ul>
       <div className="order-total">
         <p className="order-total-text">Order Total</p>
         <span className="order-total-price">$46.50</span>
       </div>
-      <CarbonNeutralInfo />
-      <Button variant="primary">Confirm Order</Button>
+      {variant !== 'modal' && (
+        <>
+          <CarbonNeutralInfo />
+          <Button variant="primary">Confirm Order</Button>
+        </>
+      )}
     </div>
   );
 }

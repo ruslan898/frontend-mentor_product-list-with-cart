@@ -7,10 +7,16 @@
   gap: 24px;
 
   &-list {
+    max-height: 780px;
     padding: 0;
     display: flex;
     flex-direction: column;
     gap: 16px;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   &-total {
@@ -26,5 +32,11 @@
     &-price {
       @include text-preset-2;
     }
+  }
+}
+
+.modal {
+  .order-list {
+    max-height: 234px;
   }
 }

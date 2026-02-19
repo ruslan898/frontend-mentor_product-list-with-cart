@@ -4,6 +4,8 @@ import MenuItem from './ui/menuItem/MenuItem';
 import Cart from './ui/cart/Cart';
 import EmptyPlaceholder from './ui/emptyPlaceholder/EmptyPlaceholder';
 import Order from './ui/order/Order';
+import OrderItem from './ui/orderItem/OrderItem';
+import Modal from './ui/modal/Modal';
 
 import './App.scss';
 
@@ -26,9 +28,15 @@ export default function App() {
         </Menu>
         <Cart>
           <Title variant="cart">Your Cart (0)</Title>
-          {/* <EmptyPlaceholder /> */}
-          <Order />
+          <EmptyPlaceholder />
+          {/* <Order>
+              <OrderItem />
+              <OrderItem />
+              <OrderItem />
+            </Order> */}
         </Cart>
+
+        {/* <Modal /> */}
       </div>
     </div>
   );

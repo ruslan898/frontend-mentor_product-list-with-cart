@@ -4,8 +4,8 @@
 .order-item {
   list-style: none;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 16px;
   color: $rose-500;
   @include text-preset-4-bold;
   border-bottom: 1px solid $rose-100;
@@ -32,5 +32,23 @@
 
   &-price {
     @include text-preset-4;
+  }
+
+  button {
+    margin-left: auto;
+  }
+
+  img {
+    width: 48px;
+    height: 48px;
+    border-radius: 4px;
+  }
+}
+
+.modal {
+  .order-item-total {
+    color: $rose-900;
+    @include text-preset-3;
+    margin-left: auto;
   }
 }
