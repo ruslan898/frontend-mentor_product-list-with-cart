@@ -5,7 +5,7 @@ import Button from '../button/Button';
 import './modal.scss';
 
 import orderConfirmedIcon from '/src/assets/images/icon-order-confirmed.svg';
-import mealImage from '/public/assets/images/image-tiramisu-thumbnail.jpg';
+import mealImage from '/assets/images/image-tiramisu-thumbnail.jpg';
 
 export default function Modal() {
   return (

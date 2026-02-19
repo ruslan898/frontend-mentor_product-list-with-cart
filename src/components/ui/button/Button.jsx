@@ -2,8 +2,25 @@ import clsx from 'clsx';
 
 import './button.scss';
 
-export default function Button({ children, className, variant = 'primary' }) {
+export default function Button({
+  children,
+  className,
+  variant = 'primary',
+  ...props
+}) {
   const classes = clsx(`btn-${variant}`, className);
 
-  return <button className={classes}>{children}</button>;
+  if (variant === 'add_alternative') {
+    return (
+      <div className={classes} {...props}>
+        {children}
+      </div>
+    );
+  }
+
+  return (
+    <button className={classes} {...props}>
+      {children}
+    </button>
+  );
 }

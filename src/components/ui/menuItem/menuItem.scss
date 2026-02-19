@@ -14,7 +14,7 @@
         border-radius: 8px;
       }
 
-      > button {
+      > [class*='btn'] {
         position: absolute;
         bottom: 0;
         left: 50%;

@@ -4,7 +4,9 @@ import './orderItem.scss';
 
 import RemoveItemIcon from '/src/assets/images/icon-remove-item.svg?react';
 
-export default function OrderItem({ variant, imageUrl }) {
+export default function OrderItem({ variant, imageUrl, data, onClick }) {
+  const { name, price, id, quantity } = data;
+
   if (variant === 'modal') {
     return (
       <li className="order-item">
@@ -24,14 +26,16 @@ export default function OrderItem({ variant, imageUrl }) {
   return (
     <li className="order-item">
       <div className="order-item-info">
-        <h3 className="order-item-title">Classic Tiramisu</h3>
+        <h3 className="order-item-title">{name}</h3>
         <div className="order-item-values">
-          <span className="order-item-quantity">1x</span>
-          <span className="order-item-price">@ $5.50</span>
-          <span className="order-item-total">$5.50</span>
+          <span className="order-item-quantity">{quantity}x</span>
+          <span className="order-item-price">@ ${price.toFixed(2)}</span>
+          <span className="order-item-total">
+            ${(quantity * price).toFixed(2)}
+          </span>
         </div>
       </div>
-      <Button variant="remove">
+      <Button variant="remove" onClick={() => onClick(id, 'remove')}>
         <RemoveItemIcon className="icon" />
       </Button>
     </li>

@@ -7,33 +7,58 @@ import addToCartIcon from '/src/assets/images/icon-add-to-cart.svg';
 import DecrementIcon from '/src/assets/images/icon-decrement-quantity.svg?react';
 import IncrementIcon from '/src/assets/images/icon-increment-quantity.svg?react';
 
+export default function MenuItem({ data, onClick, cartData }) {
+  const {
+    category,
+    name,
+    price,
+    id,
+    image: { desktop, mobile, tablet },
+  } = data;
 
-export default function MenuItem() {
+  const windowWidth = window.innerWidth;
+
+  const currentImage =
+    windowWidth < 768 ? mobile : windowWidth < 1024 ? tablet : desktop;
+
+  const itemInCart = cartData.find((item) => item.id === id);
+  const cartQuantity = itemInCart ? itemInCart.quantity : 1;
+
   return (
     <section className="menu-item">
       <div className="menu-item-img">
-        <img src="/public/assets/images/image-waffle-mobile.jpg" alt="Image" />
-        <Button variant="add">
-          <img
-            src={addToCartIcon}
-            alt="Add to cart"
-          />
-          <span className="btn-text">Add to cart</span>
-        </Button>
-        {/* <Button variant="add_alternative">
-          <Button variant="quantity">
-            <DecrementIcon className="icon" />
+        <img src={currentImage} alt={`An image of ${name}`} />
+        {!itemInCart ? (
+          <Button variant="add" onClick={() => onClick(id, 'add')}>
+            <img src={addToCartIcon} alt="Add to cart" />
+            <span className="btn-text">Add to cart</span>
           </Button>
-          <span className="btn-text">4</span>
-          <Button variant="quantity">
-            <IncrementIcon className="icon" />
+        ) : (
+          <Button variant="add_alternative">
+            <span>
+              <Button
+                variant="quantity"
+                onClick={() => onClick(id, 'decrement')}
+              >
+                <DecrementIcon className="icon" />
+              </Button>
+            </span>
+            <span className="btn-text">{cartQuantity}</span>
+            <span>
+              <Button
+                variant="quantity"
+                onClick={() => onClick(id, 'increment')}
+              >
+                <IncrementIcon className="icon" />
+              </Button>
+            </span>
           </Button>
-        </Button> */}
+        )}
       </div>
       <div className="menu-item-descr">
-        <p className="menu-item-category">Waffle</p>
-        <Title variant="menu">Waffle with Berries</Title>
-        <p className="menu-item-price">$6.50</p>
+        <p className="menu-item-category">{category}</p>
+        <Title variant="menu">{name}</Title>
+        <p className="menu-item-price">${price.toFixed(2)}</p>
       </div>
     </section>
   );
