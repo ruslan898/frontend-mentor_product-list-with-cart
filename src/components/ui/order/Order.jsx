@@ -3,7 +3,7 @@ import Button from '../button/Button';
 
 import './order.scss';
 
-export default function Order({ variant, children, cartData }) {
+export default function Order({ variant, children, cartData = [], onClick }) {
   const totalPrice = cartData.reduce((total, item) => {
     const { price, quantity } = item;
     return price * quantity + total;
@@ -19,7 +19,9 @@ export default function Order({ variant, children, cartData }) {
       {variant !== 'modal' && (
         <>
           <CarbonNeutralInfo />
-          <Button variant="primary">Confirm Order</Button>
+          <Button variant="primary" onClick={onClick}>
+            Confirm Order
+          </Button>
         </>
       )}
     </div>

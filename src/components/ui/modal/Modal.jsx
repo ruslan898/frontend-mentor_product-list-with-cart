@@ -5,9 +5,12 @@ import Button from '../button/Button';
 import './modal.scss';
 
 import orderConfirmedIcon from '/src/assets/images/icon-order-confirmed.svg';
-import mealImage from '/assets/images/image-tiramisu-thumbnail.jpg';
 
-export default function Modal() {
+export default function Modal({ cartData, onClick }) {
+  const orderItems = cartData.map((item) => (
+    <OrderItem key={item.id} variant="modal" data={item} />
+  ));
+
   return (
     <div className="overlay">
       <div className="modal">
@@ -21,13 +24,17 @@ export default function Modal() {
           <p className="modal-subtitle">We hope you enjoy your food!</p>
         </div>
         <div className="modal-order">
-          <Order variant="modal">
-            <OrderItem variant="modal" imageUrl={mealImage} />
-            <OrderItem variant="modal" imageUrl={mealImage} />
-            <OrderItem variant="modal" imageUrl={mealImage} />
+          <Order variant="modal" cartData={cartData}>
+            {orderItems}
           </Order>
         </div>
-        <Button>Start New Order</Button>
+        <Button
+          onClick={() => {
+            onClick('off');
+          }}
+        >
+          Start New Order
+        </Button>
       </div>
     </div>
   );

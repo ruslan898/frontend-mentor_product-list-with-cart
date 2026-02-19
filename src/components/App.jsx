@@ -15,6 +15,7 @@ import './App.scss';
 export default function App() {
   const [menu, setMenu] = useState([]);
   const [cart, setCart] = useState([]);
+  const [modalShown, setModalShown] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -25,6 +26,10 @@ export default function App() {
 
     fetchData();
   }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = modalShown ? 'hidden' : '';
+  }, [modalShown]);
 
   const menuItems = menu.map((menuItem) => {
     return (
@@ -76,6 +81,15 @@ export default function App() {
     });
   }
 
+  function toggleModal(status) {
+    if (status === 'on') {
+      setModalShown(true);
+    } else {
+      setModalShown(false);
+      setCart([]);
+    }
+  }
+
   return (
     <div className="container">
       <div className="app">
@@ -86,13 +100,15 @@ export default function App() {
         <Cart>
           <Title variant="cart">Your Cart ({cart.length})</Title>
           {cart.length > 0 ? (
-            <Order cartData={cart}>{cartItems}</Order>
+            <Order cartData={cart} onClick={() => toggleModal('on')}>
+              {cartItems}
+            </Order>
           ) : (
             <EmptyPlaceholder />
           )}
         </Cart>
 
-        {/* <Modal /> */}
+        {modalShown && <Modal cartData={cart} onClick={toggleModal} />}
       </div>
     </div>
   );
