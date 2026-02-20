@@ -16,6 +16,7 @@ export default function App() {
   const [menu, setMenu] = useState([]);
   const [cart, setCart] = useState([]);
   const [modalShown, setModalShown] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     async function fetchData() {
@@ -31,6 +32,16 @@ export default function App() {
     document.body.style.overflow = modalShown ? 'hidden' : '';
   }, [modalShown]);
 
+  useEffect(() => {
+    function handleWindowResize() {
+      setWindowWidth(window.innerWidth);
+    }
+
+    window.addEventListener('resize', handleWindowResize);
+
+    return () => window.removeEventListener('resize', handleWindowResize);
+  }, [windowWidth]);
+
   const menuItems = menu.map((menuItem) => {
     return (
       <MenuItem
@@ -38,6 +49,7 @@ export default function App() {
         data={menuItem}
         onClick={manageCart}
         cartData={cart}
+        windowWidth={windowWidth}
       />
     );
   });
@@ -72,7 +84,7 @@ export default function App() {
                 ? { ...item, quantity: item.quantity - 1 }
                 : { ...item },
             )
-          : prevVal.filter((item) => item.quantity > 1);
+          : prevVal.filter((item) => item.id !== id);
       }
 
       if (action === 'remove') {
@@ -92,7 +104,7 @@ export default function App() {
 
   return (
     <div className="container">
-      <div className="app">
+      <main className="app">
         <Menu>
           <Title variant="main">Desserts</Title>
           <div className="menu-grid">{menuItems}</div>
@@ -109,7 +121,7 @@ export default function App() {
         </Cart>
 
         {modalShown && <Modal cartData={cart} onClick={toggleModal} />}
-      </div>
+      </main>
     </div>
   );
 }

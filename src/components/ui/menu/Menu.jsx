@@ -2,8 +2,8 @@ import './menu.scss'
 
 export default function Menu({children}) {
   return (
-    <div className="menu">
+    <section className="menu" aria-label='Dessert menu'>
       {children}
-    </div>
+    </section>
   )
 }

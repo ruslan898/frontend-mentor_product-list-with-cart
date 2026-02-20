@@ -7,7 +7,7 @@ import addToCartIcon from '/src/assets/images/icon-add-to-cart.svg';
 import DecrementIcon from '/src/assets/images/icon-decrement-quantity.svg?react';
 import IncrementIcon from '/src/assets/images/icon-increment-quantity.svg?react';
 
-export default function MenuItem({ data, onClick, cartData }) {
+export default function MenuItem({ data, onClick, cartData, windowWidth }) {
   const {
     category,
     name,
@@ -15,8 +15,6 @@ export default function MenuItem({ data, onClick, cartData }) {
     id,
     image: { desktop, mobile, tablet },
   } = data;
-
-  const windowWidth = window.innerWidth;
 
   const currentImage =
     windowWidth < 768 ? mobile : windowWidth < 1024 ? tablet : desktop;
@@ -30,7 +28,7 @@ export default function MenuItem({ data, onClick, cartData }) {
         <img src={currentImage} alt={`An image of ${name}`} />
         {!itemInCart ? (
           <Button variant="add" onClick={() => onClick(id, 'add')}>
-            <img src={addToCartIcon} alt="Add to cart" />
+            <img src={addToCartIcon} alt="An icon of a shopping cart" />
             <span className="btn-text">Add to cart</span>
           </Button>
         ) : (

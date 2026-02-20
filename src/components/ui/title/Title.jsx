@@ -7,8 +7,7 @@ export default function Title({ children, className, variant = 'main' }) {
 
   if (variant === 'main') {
     return <h1 className={classes}>{children}</h1>;
-  }
-  if (variant === 'menu' || variant === 'cart') {
+  } else {
     return <h2 className={classes}>{children}</h2>;
   }
 }

@@ -2,8 +2,8 @@ import './cart.scss'
 
 export default function Cart({children}) {
   return (
-    <div className="cart">
+    <aside className="cart" aria-label='Shopping cart'>
       {children}
-    </div>
+    </aside>
   )
 }
