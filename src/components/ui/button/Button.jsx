@@ -10,16 +10,8 @@ export default function Button({
 }) {
   const classes = clsx(`btn-${variant}`, className);
 
-  if (variant === 'add_alternative') {
-    return (
-      <div className={classes} {...props}>
-        {children}
-      </div>
-    );
-  }
-
   return (
-    <button className={classes} {...props}>
+    <button type="button" className={classes} {...props}>
       {children}
     </button>
   );

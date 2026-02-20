@@ -40,7 +40,7 @@ export default function App() {
     window.addEventListener('resize', handleWindowResize);
 
     return () => window.removeEventListener('resize', handleWindowResize);
-  }, [windowWidth]);
+  }, []);
 
   const menuItems = menu.map((menuItem) => {
     return (
@@ -63,7 +63,7 @@ export default function App() {
     const cartItem = cart.find((item) => item.id === id);
 
     setCart((prevVal) => {
-      if (action === 'add') {
+      if (action === 'add' && !cartItem) {
         return [...prevVal, { ...menuItem, quantity: 1 }];
       }
 
@@ -107,7 +107,7 @@ export default function App() {
       <main className="app">
         <Menu>
           <Title variant="main">Desserts</Title>
-          <div className="menu-grid">{menuItems}</div>
+          <ul className="menu-grid">{menuItems}</ul>
         </Menu>
         <Cart>
           <Title variant="cart">Your Cart ({cart.length})</Title>

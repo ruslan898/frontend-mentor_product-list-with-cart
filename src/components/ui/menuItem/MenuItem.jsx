@@ -23,7 +23,7 @@ export default function MenuItem({ data, onClick, cartData, windowWidth }) {
   const cartQuantity = itemInCart ? itemInCart.quantity : 1;
 
   return (
-    <section className="menu-item">
+    <li className="menu-item">
       <div className="menu-item-img">
         <img src={currentImage} alt={`An image of ${name}`} />
         {!itemInCart ? (
@@ -32,25 +32,15 @@ export default function MenuItem({ data, onClick, cartData, windowWidth }) {
             <span className="btn-text">Add to cart</span>
           </Button>
         ) : (
-          <Button variant="add_alternative">
-            <span>
-              <Button
-                variant="quantity"
-                onClick={() => onClick(id, 'decrement')}
-              >
-                <DecrementIcon className="icon" />
-              </Button>
-            </span>
+          <div className="btn-add_alternative">
+            <Button variant="quantity" onClick={() => onClick(id, 'decrement')}>
+              <DecrementIcon className="icon" />
+            </Button>
             <span className="btn-text">{cartQuantity}</span>
-            <span>
-              <Button
-                variant="quantity"
-                onClick={() => onClick(id, 'increment')}
-              >
-                <IncrementIcon className="icon" />
-              </Button>
-            </span>
-          </Button>
+            <Button variant="quantity" onClick={() => onClick(id, 'increment')}>
+              <IncrementIcon className="icon" />
+            </Button>
+          </div>
         )}
       </div>
       <div className="menu-item-descr">
@@ -58,6 +48,6 @@ export default function MenuItem({ data, onClick, cartData, windowWidth }) {
         <Title variant="menu">{name}</Title>
         <p className="menu-item-price">${price.toFixed(2)}</p>
       </div>
-    </section>
+    </li>
   );
 }
