@@ -63,7 +63,7 @@ export default function App() {
     const cartItem = cart.find((item) => item.id === id);
 
     setCart((prevVal) => {
-      if (action === 'add' && !cartItem) {
+      if (action === 'add' && !cartItem && menuItem) {
         return [...prevVal, { ...menuItem, quantity: 1 }];
       }
 
@@ -90,6 +90,8 @@ export default function App() {
       if (action === 'remove') {
         return prevVal.filter((item) => item.id !== id);
       }
+
+      return prevVal
     });
   }
 
